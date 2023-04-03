@@ -23,22 +23,48 @@ include('config.php');
   <input type="text" id="nom" name="nom" required>
 
   <label for="prenom">Prénom :</label>
-  <input type="text" id="prenom" name="prenom" required>
+  <input type="text" id="prenom" name="prenom" >
 
-  <label for="email">Email :</label>
+  <label for="email">Adresse email :</label>
   <input type="email" id="email" name="email" required>
 
   <label for="password">Mot de passe :</label>
-  <input type="password" id="password" name="password" required>
+  <input type="password" id="password" name="password"  required>
+
+
 
   <button type="submit">S'inscrire</button>
+  
+  <div id="errors" style="color: red;"></div>
+
+  <script>
+    document.querySelector('#mon-formulaire-register').addEventListener('submit', function(e) {
+      const nom = document.querySelector('#nom').value.trim();
+      const prenom = document.querySelector('#prenom').value.trim();
+
+      const errors = [];
+
+      if (nom === '') {
+        errors.push('Le nom est obligatoire.');
+      }
+
+      if (prenom === '') {
+        errors.push('Le prénom est obligatoire.');
+      }
+
+      if (errors.length > 0) {
+        e.preventDefault();
+        document.querySelector('#errors').innerHTML = errors.join('<br>');
+      }
+    });
+  </script>
 </form>
 
-</main>
 
 
 
-<script>
+
+<!--<script>
 // Sélection de l'élément du formulaire et ajout d'un écouteur d'événements sur la soumission
 document.querySelector('#mon-formulaire-register').addEventListener('submit', (event) => {
   event.preventDefault(); // Empêche le rechargement de la page
@@ -62,7 +88,7 @@ document.querySelector('#mon-formulaire-register').addEventListener('submit', (e
 
 
 </script>
-
+-->
 
     
 </body>
