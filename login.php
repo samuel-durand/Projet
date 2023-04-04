@@ -18,14 +18,37 @@ include('config.php');
     <h1>Connexion</h1>
     <main>
     <form method="post" id="mon-formulaire">
-        <label for="email">email :</label>
-        <input type="email" name="email" id="email">
+    <label for="email">email :</label>
+    <input type="email" name="email" id="email">
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password">
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password">
 
-        <button type="submit">se connecter</button>
+    <button type="submit">se connecter</button>
+    <div id="errors" style="color: red;"></div>
+    <script>
+        document.querySelector('#mon-formulaire').addEventListener('submit',function(e){
+            const email = document.querySelector('#email').value.trim();
+            const password = document.querySelector('#password').value.trim();
+
+            const errors = [];
+
+            if (email === ''){
+                errors.push('email est obligatoire.');
+            }
+
+            if (password === '') {
+                errors.push('le mot de pass est obligatoire.');
+            }
+
+            if(errors.length >0){
+                e.preventDefault();
+                document.querySelector('#errors').innerHTML = errors.join('<br>');
+            }
+        });
+    </script>
 </form>
+
 </main>
 <script src="login.js"></script>
 

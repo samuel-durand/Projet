@@ -41,6 +41,10 @@ include('config.php');
     document.querySelector('#mon-formulaire-register').addEventListener('submit', function(e) {
       const nom = document.querySelector('#nom').value.trim();
       const prenom = document.querySelector('#prenom').value.trim();
+      const email = document.querySelector('#email').value.trim();
+      const password = document.querySelector('#password').value.trim();
+
+
 
       const errors = [];
 
@@ -50,6 +54,14 @@ include('config.php');
 
       if (prenom === '') {
         errors.push('Le prénom est obligatoire.');
+      }
+
+      if (email === '') {
+        errors.push('email est obligatoire');
+      }
+
+      if (password === '') {
+        errors.push('Le mot de pass est obligatoire');
       }
 
       if (errors.length > 0) {
