@@ -20,16 +20,16 @@ include('config.php');
 <main>
 <form id="mon-formulaire-register" method="POST">
   <label for="nom">Nom :</label>
-  <input type="text" id="nom" name="nom" required>
+  <input type="text" id="nom" name="nom" >
 
   <label for="prenom">Prénom :</label>
   <input type="text" id="prenom" name="prenom" >
 
   <label for="email">Adresse email :</label>
-  <input type="email" id="email" name="email" required>
+  <input type="email" id="email" name="email" >
 
   <label for="password">Mot de passe :</label>
-  <input type="password" id="password" name="password"  required>
+  <input type="password" id="password" name="password"  >
 
 
 
@@ -64,10 +64,21 @@ include('config.php');
 
 
 
-<!--<script>
+<script>
 // Sélection de l'élément du formulaire et ajout d'un écouteur d'événements sur la soumission
 document.querySelector('#mon-formulaire-register').addEventListener('submit', (event) => {
   event.preventDefault(); // Empêche le rechargement de la page
+
+  // Vérification que tous les champs obligatoires sont remplis
+  const nom = document.querySelector('#nom').value.trim();
+  const prenom = document.querySelector('#prenom').value.trim();
+  const email = document.querySelector('#email').value.trim();
+  const password = document.querySelector('#password').value.trim();
+
+  if (nom === '' || prenom === '' || email === '' || password === '') {
+    alert('Veuillez remplir tous les champs obligatoires.');
+    return;
+  }
 
   // Récupération des données du formulaire
   const formData = new FormData(event.target);
@@ -88,7 +99,7 @@ document.querySelector('#mon-formulaire-register').addEventListener('submit', (e
 
 
 </script>
--->
+
 
     
 </body>
